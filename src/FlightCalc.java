@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.JOptionPane;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -147,10 +148,11 @@ public class FlightCalc extends JFrame {
     	    writer.close();
         	System.out.println(maxAlt);
     	}
-    	catch(IOException e)
+    	catch(Exception e)
     	{
     	     e.printStackTrace();
-    	}   
+		JOptionPane.showMessageDialog(null, e.getMessage(), "oops", JOptionPane.ERROR_MESSAGE);
+    	}
     	
     }
     
