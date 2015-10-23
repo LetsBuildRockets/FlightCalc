@@ -88,9 +88,24 @@ public class FlightCalc extends JFrame {
         fillDefaults();
     }
     
+    /** throws an error if inputs look wrong in a non-obvious way
+     * ex: if something is negative
+     */
+    private void checkInputs() {
+	if(
+	    Double.valueOf(textmdot.getText()) < 0 ||
+	    Double.valueOf(textm0.getText()) < 0 ||
+	    Double.valueOf(textFt.getText()) < 0 ||
+	    Double.valueOf(textCd.getText()) < 0 ||
+	    Double.valueOf(textTburn.getText()) < 0 ||
+	    Double.valueOf(textArea.getText()) < 0
+	) throw new IllegalArgumentException("an input's negative and that would be silly");
+	
+    }
     
     private void calculate() {
     	try {
+		checkInputs();
         	FileWriter writer = new FileWriter("test.csv");
    		 
         	writer.append("Time");
